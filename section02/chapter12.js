@@ -1,3 +1,5 @@
+// 비동기 작업 처리하기(1. 콜백함수)
+
 // function add(a, b, callback) {
 //   setTimeout(() => {
 //     const sum = a + b;
