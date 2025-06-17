@@ -1,4 +1,5 @@
 import "./TodoItem.css";
+import { memo } from "react";
 
 const TodoItem = ({ id, isdone, content, date, onUpdate, onDelete }) => {
   const onChangeCheckbox = () => {
@@ -19,4 +20,18 @@ const TodoItem = ({ id, isdone, content, date, onUpdate, onDelete }) => {
   );
 };
 
-export default TodoItem;
+// 이렇게만 하면 onUpdate, onDelete 함수때문에 계속 바뀌었다고 판단해서 리렌더링 됨
+// => 함수는 새롭게 전달이 될 때마다 다른 주소값을 가지기 때문
+// export default memo(TodoItem)
+
+// 고차 컴포넌트(HOC)
+export default memo(TodoItem, (prevProps, nextProps) => {
+  // 반환값에 따라, Props가 바뀌었는지 안 바뀌었는지 판단
+  // True -> Props 바뀌지 않음 => 리렌더링 X
+  // False -> Props 바뀜 => 리렌더링 O
+  if (prevProps.id !== nextProps.id) return false;
+  if (prevProps.isdone !== nextProps.isdone) return false;
+  if (prevProps.content !== nextProps.content) return false;
+  if (prevProps.date !== nextProps.date) return false;
+  return true;
+});
