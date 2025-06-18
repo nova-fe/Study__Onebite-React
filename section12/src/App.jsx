@@ -79,28 +79,6 @@ function App() {
 
   return (
     <>
-      <button
-        onClick={() => {
-          onCreate(new Date().getTime(), 1, "HELLO");
-        }}
-      >
-        일기 등록 테스트
-      </button>
-      <button
-        onClick={() => {
-          onUpdate(3, new Date().getTime(), 3, "수정");
-        }}
-      >
-        일기 수정 테스트
-      </button>
-      <button
-        onClick={() => {
-          onDelete(3);
-        }}
-      >
-        일기 삭제 테스트
-      </button>
-
       <DiaryStateContext.Provider value={data}>
         <DiaryDispatchContext.Provider value={{ onCreate, onUpdate, onDelete }}>
           <Routes>
