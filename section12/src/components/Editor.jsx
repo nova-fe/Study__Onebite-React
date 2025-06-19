@@ -24,8 +24,8 @@ const Editor = ({ initData, onSubmit }) => {
   }, [initData]);
 
   const onChangeInput = (e) => {
-    console.log(e.target.name); // 입력이 들어온 요소
-    console.log(e.target.value); // 입력된 값
+    // console.log(e.target.name); // 입력이 들어온 요소
+    // console.log(e.target.value); // 입력된 값
 
     let name = e.target.name;
     let value = e.target.value;
