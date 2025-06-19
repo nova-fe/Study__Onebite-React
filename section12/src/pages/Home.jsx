@@ -3,6 +3,7 @@ import { DiaryStateContext } from "../App";
 import Button from "../components/Button";
 import DiaryList from "../components/DiaryList";
 import Header from "../components/Header";
+import usePageTitle from "./../hooks/usePageTitle";
 
 const getMonthlyData = (pivotDate, data) => {
   // (이번 달의 가장 첫번째 시작하는 시간) pivotDate 의 연도/월에 해당하는 월의 1일 0시 0분 0초
@@ -25,6 +26,7 @@ const Home = () => {
   const data = useContext(DiaryStateContext); // 기존 데이터
   const [pivotDate, setPivotDate] = useState(new Date());
   const monthlyData = getMonthlyData(pivotDate, data); // 달별로 필터링된 데이터
+  usePageTitle("감정 일기장");
 
   // 날짜를 한 달 전으로
   const onDecreaseMonth = () => {

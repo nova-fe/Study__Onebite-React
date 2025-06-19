@@ -4,10 +4,13 @@ import Editor from "../components/Editor";
 import Header from "../components/Header";
 import { useContext } from "react";
 import { DiaryDispatchContext } from "../App";
+import usePageTitle from "./../hooks/usePageTitle";
 
 const New = () => {
   const nav = useNavigate();
   const { onCreate } = useContext(DiaryDispatchContext);
+  usePageTitle("새 일기 쓰기");
+
   const onSubmit = (input) => {
     // onCreate(createdDate, emotionId, content)
     onCreate(input.createdDate.getTime(), input.emotionId, input.content);
